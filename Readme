@@ -1,0 +1,30 @@
+Task: Performing a vulnerability scan for the local host to detect anomalies.
+Tools Used: Cmd Prompt, Nessus software tool, Google Search
+Procedure:
+Step1: Installed Nessus from "https://www.tenable.com/downloads/nessus?loginAttempted=true"
+Step2: Used Cmd prompt for gathering local host ipaddress.
+         Cmd used "ipconfig"
+Step3: Scanned the local host using My Basic Network Scan.
+Step4: Checked vulnerability in "cwe.mitre.org" to know the impact of the vulnerability.
+
+Observation:
+Found port 139udp and 445tcp is open and has CWE-284: Improper Access Control.
+Expired SSL Certificate found which is a major risk.
+SMB was set to signing not Required which is the easy way for attackers to take control of the system.
+
+Security Concerns:
+1) UDP Port 137 can be exploited for attacks such as NetBIOS Name Service (NBNS) spoofing or man-in-the-middle (MITM) attacks. 
+  These vulnerabilities arise when the port is exposed to untrusted networks, such as the internet.
+
+2) SSL encrypts data, making it unreadable to unauthorized parties, and provides a secure environment for sensitive information like passwords, credit card details, and personal data.
+  when it is not used correctly, there is high chance for data tampering and Man-in-the-Middle Attacks.
+
+3)SMB (Server Message Block) message signing is a security feature that ensures the integrity and authenticity of SMB communications by adding a cryptographic signature to each message. 
+  When SMB message signing is not required, it leaves the system vulnerable to man-in-the-middle (MITM) attacks, where an attacker can intercept and modify SMB traffic.
+
+Precautions:
+1) Common use of these ports for file sharing should be disabled when it is for personal network.
+2) Need to Purchase or generate a proper SSL certificate for this service.
+3) Enforce message signing in the host's configuration. 
+
+
